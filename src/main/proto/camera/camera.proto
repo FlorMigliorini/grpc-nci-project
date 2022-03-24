@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package camera;
+
+option java_package = "com.proto.camera";
+option java_multiple_files = true;
+
+message Camera{
+  string ID = 1;
+  string room = 2;
+}
+
+message CameraRequest{
+  Camera camera = 1;
+}
+
+message CameraResponse{
+  string result = 1;
+}
+
+service CameraService{
+  //Unary
+  rpc Camera(CameraRequest) returns (CameraResponse){};
+}

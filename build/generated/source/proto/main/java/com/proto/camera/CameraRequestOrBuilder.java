@@ -8,17 +8,26 @@ public interface CameraRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.camera.Camera camera = 1;</code>
-   * @return Whether the camera field is set.
+   * <code>string ID = 1;</code>
+   * @return The iD.
    */
-  boolean hasCamera();
+  java.lang.String getID();
   /**
-   * <code>.camera.Camera camera = 1;</code>
-   * @return The camera.
+   * <code>string ID = 1;</code>
+   * @return The bytes for iD.
    */
-  com.proto.camera.Camera getCamera();
+  com.google.protobuf.ByteString
+      getIDBytes();
+
   /**
-   * <code>.camera.Camera camera = 1;</code>
+   * <code>string room = 2;</code>
+   * @return The room.
    */
-  com.proto.camera.CameraOrBuilder getCameraOrBuilder();
+  java.lang.String getRoom();
+  /**
+   * <code>string room = 2;</code>
+   * @return The bytes for room.
+   */
+  com.google.protobuf.ByteString
+      getRoomBytes();
 }

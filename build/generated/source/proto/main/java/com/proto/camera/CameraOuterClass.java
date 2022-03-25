@@ -39,12 +39,11 @@ public final class CameraOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\023camera/camera.proto\022\006camera\"\"\n\006Camera\022" +
-      "\n\n\002ID\030\001 \001(\t\022\014\n\004room\030\002 \001(\t\"/\n\rCameraReque" +
-      "st\022\036\n\006camera\030\001 \001(\0132\016.camera.Camera\" \n\016Ca" +
-      "meraResponse\022\016\n\006result\030\001 \001(\t2J\n\rCameraSe" +
-      "rvice\0229\n\006Camera\022\025.camera.CameraRequest\032\026" +
-      ".camera.CameraResponse\"\000B\024\n\020com.proto.ca" +
-      "meraP\001b\006proto3"
+      "\n\n\002ID\030\001 \001(\t\022\014\n\004room\030\002 \001(\t\"\037\n\rCameraReque" +
+      "st\022\016\n\006camera\030\001 \001(\t\" \n\016CameraResponse\022\016\n\006" +
+      "result\030\001 \001(\0052J\n\rCameraService\0229\n\006Camera\022" +
+      "\025.camera.CameraRequest\032\026.camera.CameraRe" +
+      "sponse\"\000B\024\n\020com.proto.cameraP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -239,7 +239,7 @@ public final class CameraServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.proto.camera.CameraOuterClass.getDescriptor();
+      return com.proto.camera.Camera.getDescriptor();
     }
 
     @java.lang.Override

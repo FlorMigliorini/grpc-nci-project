@@ -16,6 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CameraRequest() {
+    iD_ = "";
+    room_ = "";
   }
 
   @java.lang.Override
@@ -49,16 +51,15 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            com.proto.camera.Camera.Builder subBuilder = null;
-            if (camera_ != null) {
-              subBuilder = camera_.toBuilder();
-            }
-            camera_ = input.readMessage(com.proto.camera.Camera.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(camera_);
-              camera_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            iD_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            room_ = s;
             break;
           }
           default: {
@@ -82,41 +83,91 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+    return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_fieldAccessorTable
+    return com.proto.camera.Camera.internal_static_camera_CameraRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.proto.camera.CameraRequest.class, com.proto.camera.CameraRequest.Builder.class);
   }
 
-  public static final int CAMERA_FIELD_NUMBER = 1;
-  private com.proto.camera.Camera camera_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object iD_;
   /**
-   * <code>.camera.Camera camera = 1;</code>
-   * @return Whether the camera field is set.
+   * <code>string ID = 1;</code>
+   * @return The iD.
    */
   @java.lang.Override
-  public boolean hasCamera() {
-    return camera_ != null;
+  public java.lang.String getID() {
+    java.lang.Object ref = iD_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      iD_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.camera.Camera camera = 1;</code>
-   * @return The camera.
+   * <code>string ID = 1;</code>
+   * @return The bytes for iD.
    */
   @java.lang.Override
-  public com.proto.camera.Camera getCamera() {
-    return camera_ == null ? com.proto.camera.Camera.getDefaultInstance() : camera_;
+  public com.google.protobuf.ByteString
+      getIDBytes() {
+    java.lang.Object ref = iD_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      iD_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ROOM_FIELD_NUMBER = 2;
+  private volatile java.lang.Object room_;
+  /**
+   * <code>string room = 2;</code>
+   * @return The room.
+   */
+  @java.lang.Override
+  public java.lang.String getRoom() {
+    java.lang.Object ref = room_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      room_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.camera.Camera camera = 1;</code>
+   * <code>string room = 2;</code>
+   * @return The bytes for room.
    */
   @java.lang.Override
-  public com.proto.camera.CameraOrBuilder getCameraOrBuilder() {
-    return getCamera();
+  public com.google.protobuf.ByteString
+      getRoomBytes() {
+    java.lang.Object ref = room_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      room_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -133,8 +184,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (camera_ != null) {
-      output.writeMessage(1, getCamera());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(iD_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, iD_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(room_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, room_);
     }
     unknownFields.writeTo(output);
   }
@@ -145,9 +199,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (camera_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getCamera());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(iD_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, iD_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(room_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, room_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,11 +220,10 @@ private static final long serialVersionUID = 0L;
     }
     com.proto.camera.CameraRequest other = (com.proto.camera.CameraRequest) obj;
 
-    if (hasCamera() != other.hasCamera()) return false;
-    if (hasCamera()) {
-      if (!getCamera()
-          .equals(other.getCamera())) return false;
-    }
+    if (!getID()
+        .equals(other.getID())) return false;
+    if (!getRoom()
+        .equals(other.getRoom())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -180,10 +235,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasCamera()) {
-      hash = (37 * hash) + CAMERA_FIELD_NUMBER;
-      hash = (53 * hash) + getCamera().hashCode();
-    }
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getID().hashCode();
+    hash = (37 * hash) + ROOM_FIELD_NUMBER;
+    hash = (53 * hash) + getRoom().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -288,13 +343,13 @@ private static final long serialVersionUID = 0L;
       com.proto.camera.CameraRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_fieldAccessorTable
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.proto.camera.CameraRequest.class, com.proto.camera.CameraRequest.Builder.class);
     }
@@ -317,19 +372,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (cameraBuilder_ == null) {
-        camera_ = null;
-      } else {
-        camera_ = null;
-        cameraBuilder_ = null;
-      }
+      iD_ = "";
+
+      room_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
     }
 
     @java.lang.Override
@@ -349,11 +402,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.proto.camera.CameraRequest buildPartial() {
       com.proto.camera.CameraRequest result = new com.proto.camera.CameraRequest(this);
-      if (cameraBuilder_ == null) {
-        result.camera_ = camera_;
-      } else {
-        result.camera_ = cameraBuilder_.build();
-      }
+      result.iD_ = iD_;
+      result.room_ = room_;
       onBuilt();
       return result;
     }
@@ -402,8 +452,13 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.proto.camera.CameraRequest other) {
       if (other == com.proto.camera.CameraRequest.getDefaultInstance()) return this;
-      if (other.hasCamera()) {
-        mergeCamera(other.getCamera());
+      if (!other.getID().isEmpty()) {
+        iD_ = other.iD_;
+        onChanged();
+      }
+      if (!other.getRoom().isEmpty()) {
+        room_ = other.room_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -434,123 +489,156 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.proto.camera.Camera camera_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.proto.camera.Camera, com.proto.camera.Camera.Builder, com.proto.camera.CameraOrBuilder> cameraBuilder_;
+    private java.lang.Object iD_ = "";
     /**
-     * <code>.camera.Camera camera = 1;</code>
-     * @return Whether the camera field is set.
+     * <code>string ID = 1;</code>
+     * @return The iD.
      */
-    public boolean hasCamera() {
-      return cameraBuilder_ != null || camera_ != null;
-    }
-    /**
-     * <code>.camera.Camera camera = 1;</code>
-     * @return The camera.
-     */
-    public com.proto.camera.Camera getCamera() {
-      if (cameraBuilder_ == null) {
-        return camera_ == null ? com.proto.camera.Camera.getDefaultInstance() : camera_;
+    public java.lang.String getID() {
+      java.lang.Object ref = iD_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        iD_ = s;
+        return s;
       } else {
-        return cameraBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.camera.Camera camera = 1;</code>
+     * <code>string ID = 1;</code>
+     * @return The bytes for iD.
      */
-    public Builder setCamera(com.proto.camera.Camera value) {
-      if (cameraBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        camera_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getIDBytes() {
+      java.lang.Object ref = iD_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        iD_ = b;
+        return b;
       } else {
-        cameraBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.camera.Camera camera = 1;</code>
+     * <code>string ID = 1;</code>
+     * @param value The iD to set.
+     * @return This builder for chaining.
      */
-    public Builder setCamera(
-        com.proto.camera.Camera.Builder builderForValue) {
-      if (cameraBuilder_ == null) {
-        camera_ = builderForValue.build();
-        onChanged();
-      } else {
-        cameraBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.camera.Camera camera = 1;</code>
-     */
-    public Builder mergeCamera(com.proto.camera.Camera value) {
-      if (cameraBuilder_ == null) {
-        if (camera_ != null) {
-          camera_ =
-            com.proto.camera.Camera.newBuilder(camera_).mergeFrom(value).buildPartial();
-        } else {
-          camera_ = value;
-        }
-        onChanged();
-      } else {
-        cameraBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.camera.Camera camera = 1;</code>
-     */
-    public Builder clearCamera() {
-      if (cameraBuilder_ == null) {
-        camera_ = null;
-        onChanged();
-      } else {
-        camera_ = null;
-        cameraBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.camera.Camera camera = 1;</code>
-     */
-    public com.proto.camera.Camera.Builder getCameraBuilder() {
-      
+    public Builder setID(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      iD_ = value;
       onChanged();
-      return getCameraFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.camera.Camera camera = 1;</code>
+     * <code>string ID = 1;</code>
+     * @return This builder for chaining.
      */
-    public com.proto.camera.CameraOrBuilder getCameraOrBuilder() {
-      if (cameraBuilder_ != null) {
-        return cameraBuilder_.getMessageOrBuilder();
+    public Builder clearID() {
+      
+      iD_ = getDefaultInstance().getID();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string ID = 1;</code>
+     * @param value The bytes for iD to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIDBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      iD_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object room_ = "";
+    /**
+     * <code>string room = 2;</code>
+     * @return The room.
+     */
+    public java.lang.String getRoom() {
+      java.lang.Object ref = room_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        room_ = s;
+        return s;
       } else {
-        return camera_ == null ?
-            com.proto.camera.Camera.getDefaultInstance() : camera_;
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.camera.Camera camera = 1;</code>
+     * <code>string room = 2;</code>
+     * @return The bytes for room.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.proto.camera.Camera, com.proto.camera.Camera.Builder, com.proto.camera.CameraOrBuilder> 
-        getCameraFieldBuilder() {
-      if (cameraBuilder_ == null) {
-        cameraBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.proto.camera.Camera, com.proto.camera.Camera.Builder, com.proto.camera.CameraOrBuilder>(
-                getCamera(),
-                getParentForChildren(),
-                isClean());
-        camera_ = null;
+    public com.google.protobuf.ByteString
+        getRoomBytes() {
+      java.lang.Object ref = room_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        room_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-      return cameraBuilder_;
+    }
+    /**
+     * <code>string room = 2;</code>
+     * @param value The room to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRoom(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      room_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string room = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRoom() {
+      
+      room_ = getDefaultInstance().getRoom();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string room = 2;</code>
+     * @param value The bytes for room to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRoomBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      room_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

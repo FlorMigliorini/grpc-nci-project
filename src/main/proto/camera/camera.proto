@@ -5,9 +5,13 @@ package camera;
 option java_package = "com.proto.camera";
 option java_multiple_files = true;
 
-message Camera{
+message CameraIdentMessage{
   string ID = 1;
-  string room = 2;
+  //int32 room = 2;
+}
+
+message CameraIdentResponse{
+  string cameraInfo = 1;
 }
 
 message CameraRequest{
@@ -21,4 +25,6 @@ message CameraResponse{
 service CameraService{
   //Unary
   rpc Camera(CameraRequest) returns (CameraResponse){};
+  //Server streaming
+  rpc CameraIdent(CameraIdentMessage) returns (stream CameraIdentResponse) {}
 }

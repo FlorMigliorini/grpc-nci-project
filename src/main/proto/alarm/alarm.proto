@@ -6,14 +6,18 @@ option java_package = "com.proto.alarm";
 option java_multiple_files = true;
 
 message AlarmRequest{
-  string request = 1;
+  string loggerMsg = 1;
+  string loggerDay = 2;
+  string loggerTimer = 3;
 }
 
 message AlarmResponse{
-  string result = 1;
+  string securityPersonnel1 = 1;
+  string securityPersonnel2 = 2;
+  string securityPersonnel3 = 3;
 }
 
 service AlarmService{
-
-  rpc Alarm(AlarmRequest) returns (AlarmResponse){};
+  //Bi-directional
+  rpc Alarm(stream AlarmRequest) returns (stream AlarmResponse){};
 }

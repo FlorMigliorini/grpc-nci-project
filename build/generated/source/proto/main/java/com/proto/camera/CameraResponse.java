@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
+    return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_fieldAccessorTable
+    return com.proto.camera.Camera.internal_static_camera_CameraResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.proto.camera.CameraResponse.class, com.proto.camera.CameraResponse.Builder.class);
   }
@@ -288,13 +288,13 @@ private static final long serialVersionUID = 0L;
       com.proto.camera.CameraResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_fieldAccessorTable
+      return com.proto.camera.Camera.internal_static_camera_CameraResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.proto.camera.CameraResponse.class, com.proto.camera.CameraResponse.Builder.class);
     }
@@ -325,7 +325,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
     }
 
     @java.lang.Override

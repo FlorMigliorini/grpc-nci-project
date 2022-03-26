@@ -1,5 +1,7 @@
 package com.github.flormigliorini.grpc.security.camera;
 
+import com.proto.camera.CameraIdentMessage;
+import com.proto.camera.CameraIdentResponse;
 import com.proto.camera.CameraRequest;
 import com.proto.camera.CameraResponse;
 import io.grpc.Server;
@@ -51,5 +53,29 @@ public class Camera extends CameraImplBase{
 
         //complete the RCP call
         responseObserver.onCompleted();
+    }
+
+
+    @Override
+    public void cameraIdent(CameraIdentMessage cameraIdentMessage, StreamObserver<CameraIdentResponse> responseObserver) {
+
+        String result = "";
+        int counter = 1;
+        try{
+           for (int i=0; i < 2; i++){
+               result = "Camera " + counter + ": = Cam0" + counter + ", room" + counter + " -> Active";
+               counter++;
+               CameraIdentResponse cameraIdentResponse = CameraIdentResponse.newBuilder()
+                       .setCameraInfo(result)
+                       .build();
+
+               responseObserver.onNext(cameraIdentResponse);
+               Thread.sleep(1000L);
+           }
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            responseObserver.onCompleted();
+        }
     }
 }

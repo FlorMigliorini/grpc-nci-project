@@ -74,13 +74,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+    return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_fieldAccessorTable
+    return com.proto.camera.Camera.internal_static_camera_CameraRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.proto.camera.CameraRequest.class, com.proto.camera.CameraRequest.Builder.class);
   }
@@ -260,13 +260,13 @@ private static final long serialVersionUID = 0L;
       com.proto.camera.CameraRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_fieldAccessorTable
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.proto.camera.CameraRequest.class, com.proto.camera.CameraRequest.Builder.class);
     }
@@ -297,7 +297,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraRequest_descriptor;
+      return com.proto.camera.Camera.internal_static_camera_CameraRequest_descriptor;
     }
 
     @java.lang.Override

@@ -16,7 +16,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private AlarmResponse() {
-    result_ = "";
+    securityPersonnel1_ = "";
+    securityPersonnel2_ = "";
+    securityPersonnel3_ = "";
   }
 
   @java.lang.Override
@@ -52,7 +54,19 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            result_ = s;
+            securityPersonnel1_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            securityPersonnel2_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            securityPersonnel3_ = s;
             break;
           }
           default: {
@@ -87,38 +101,114 @@ private static final long serialVersionUID = 0L;
             com.proto.alarm.AlarmResponse.class, com.proto.alarm.AlarmResponse.Builder.class);
   }
 
-  public static final int RESULT_FIELD_NUMBER = 1;
-  private volatile java.lang.Object result_;
+  public static final int SECURITYPERSONNEL1_FIELD_NUMBER = 1;
+  private volatile java.lang.Object securityPersonnel1_;
   /**
-   * <code>string result = 1;</code>
-   * @return The result.
+   * <code>string securityPersonnel1 = 1;</code>
+   * @return The securityPersonnel1.
    */
   @java.lang.Override
-  public java.lang.String getResult() {
-    java.lang.Object ref = result_;
+  public java.lang.String getSecurityPersonnel1() {
+    java.lang.Object ref = securityPersonnel1_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      result_ = s;
+      securityPersonnel1_ = s;
       return s;
     }
   }
   /**
-   * <code>string result = 1;</code>
-   * @return The bytes for result.
+   * <code>string securityPersonnel1 = 1;</code>
+   * @return The bytes for securityPersonnel1.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getResultBytes() {
-    java.lang.Object ref = result_;
+      getSecurityPersonnel1Bytes() {
+    java.lang.Object ref = securityPersonnel1_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      result_ = b;
+      securityPersonnel1_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SECURITYPERSONNEL2_FIELD_NUMBER = 2;
+  private volatile java.lang.Object securityPersonnel2_;
+  /**
+   * <code>string securityPersonnel2 = 2;</code>
+   * @return The securityPersonnel2.
+   */
+  @java.lang.Override
+  public java.lang.String getSecurityPersonnel2() {
+    java.lang.Object ref = securityPersonnel2_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      securityPersonnel2_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string securityPersonnel2 = 2;</code>
+   * @return The bytes for securityPersonnel2.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getSecurityPersonnel2Bytes() {
+    java.lang.Object ref = securityPersonnel2_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      securityPersonnel2_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SECURITYPERSONNEL3_FIELD_NUMBER = 3;
+  private volatile java.lang.Object securityPersonnel3_;
+  /**
+   * <code>string securityPersonnel3 = 3;</code>
+   * @return The securityPersonnel3.
+   */
+  @java.lang.Override
+  public java.lang.String getSecurityPersonnel3() {
+    java.lang.Object ref = securityPersonnel3_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      securityPersonnel3_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string securityPersonnel3 = 3;</code>
+   * @return The bytes for securityPersonnel3.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getSecurityPersonnel3Bytes() {
+    java.lang.Object ref = securityPersonnel3_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      securityPersonnel3_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -139,8 +229,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(result_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, result_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel1_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, securityPersonnel1_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel2_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, securityPersonnel2_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel3_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, securityPersonnel3_);
     }
     unknownFields.writeTo(output);
   }
@@ -151,8 +247,14 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(result_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, result_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel1_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, securityPersonnel1_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel2_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, securityPersonnel2_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(securityPersonnel3_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, securityPersonnel3_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -169,8 +271,12 @@ private static final long serialVersionUID = 0L;
     }
     com.proto.alarm.AlarmResponse other = (com.proto.alarm.AlarmResponse) obj;
 
-    if (!getResult()
-        .equals(other.getResult())) return false;
+    if (!getSecurityPersonnel1()
+        .equals(other.getSecurityPersonnel1())) return false;
+    if (!getSecurityPersonnel2()
+        .equals(other.getSecurityPersonnel2())) return false;
+    if (!getSecurityPersonnel3()
+        .equals(other.getSecurityPersonnel3())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -182,8 +288,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + RESULT_FIELD_NUMBER;
-    hash = (53 * hash) + getResult().hashCode();
+    hash = (37 * hash) + SECURITYPERSONNEL1_FIELD_NUMBER;
+    hash = (53 * hash) + getSecurityPersonnel1().hashCode();
+    hash = (37 * hash) + SECURITYPERSONNEL2_FIELD_NUMBER;
+    hash = (53 * hash) + getSecurityPersonnel2().hashCode();
+    hash = (37 * hash) + SECURITYPERSONNEL3_FIELD_NUMBER;
+    hash = (53 * hash) + getSecurityPersonnel3().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -317,7 +427,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      result_ = "";
+      securityPersonnel1_ = "";
+
+      securityPersonnel2_ = "";
+
+      securityPersonnel3_ = "";
 
       return this;
     }
@@ -345,7 +459,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.proto.alarm.AlarmResponse buildPartial() {
       com.proto.alarm.AlarmResponse result = new com.proto.alarm.AlarmResponse(this);
-      result.result_ = result_;
+      result.securityPersonnel1_ = securityPersonnel1_;
+      result.securityPersonnel2_ = securityPersonnel2_;
+      result.securityPersonnel3_ = securityPersonnel3_;
       onBuilt();
       return result;
     }
@@ -394,8 +510,16 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.proto.alarm.AlarmResponse other) {
       if (other == com.proto.alarm.AlarmResponse.getDefaultInstance()) return this;
-      if (!other.getResult().isEmpty()) {
-        result_ = other.result_;
+      if (!other.getSecurityPersonnel1().isEmpty()) {
+        securityPersonnel1_ = other.securityPersonnel1_;
+        onChanged();
+      }
+      if (!other.getSecurityPersonnel2().isEmpty()) {
+        securityPersonnel2_ = other.securityPersonnel2_;
+        onChanged();
+      }
+      if (!other.getSecurityPersonnel3().isEmpty()) {
+        securityPersonnel3_ = other.securityPersonnel3_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -427,78 +551,230 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object result_ = "";
+    private java.lang.Object securityPersonnel1_ = "";
     /**
-     * <code>string result = 1;</code>
-     * @return The result.
+     * <code>string securityPersonnel1 = 1;</code>
+     * @return The securityPersonnel1.
      */
-    public java.lang.String getResult() {
-      java.lang.Object ref = result_;
+    public java.lang.String getSecurityPersonnel1() {
+      java.lang.Object ref = securityPersonnel1_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        result_ = s;
+        securityPersonnel1_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string result = 1;</code>
-     * @return The bytes for result.
+     * <code>string securityPersonnel1 = 1;</code>
+     * @return The bytes for securityPersonnel1.
      */
     public com.google.protobuf.ByteString
-        getResultBytes() {
-      java.lang.Object ref = result_;
+        getSecurityPersonnel1Bytes() {
+      java.lang.Object ref = securityPersonnel1_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        result_ = b;
+        securityPersonnel1_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string result = 1;</code>
-     * @param value The result to set.
+     * <code>string securityPersonnel1 = 1;</code>
+     * @param value The securityPersonnel1 to set.
      * @return This builder for chaining.
      */
-    public Builder setResult(
+    public Builder setSecurityPersonnel1(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      result_ = value;
+      securityPersonnel1_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string result = 1;</code>
+     * <code>string securityPersonnel1 = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearResult() {
+    public Builder clearSecurityPersonnel1() {
       
-      result_ = getDefaultInstance().getResult();
+      securityPersonnel1_ = getDefaultInstance().getSecurityPersonnel1();
       onChanged();
       return this;
     }
     /**
-     * <code>string result = 1;</code>
-     * @param value The bytes for result to set.
+     * <code>string securityPersonnel1 = 1;</code>
+     * @param value The bytes for securityPersonnel1 to set.
      * @return This builder for chaining.
      */
-    public Builder setResultBytes(
+    public Builder setSecurityPersonnel1Bytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      result_ = value;
+      securityPersonnel1_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object securityPersonnel2_ = "";
+    /**
+     * <code>string securityPersonnel2 = 2;</code>
+     * @return The securityPersonnel2.
+     */
+    public java.lang.String getSecurityPersonnel2() {
+      java.lang.Object ref = securityPersonnel2_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        securityPersonnel2_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string securityPersonnel2 = 2;</code>
+     * @return The bytes for securityPersonnel2.
+     */
+    public com.google.protobuf.ByteString
+        getSecurityPersonnel2Bytes() {
+      java.lang.Object ref = securityPersonnel2_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        securityPersonnel2_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string securityPersonnel2 = 2;</code>
+     * @param value The securityPersonnel2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSecurityPersonnel2(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      securityPersonnel2_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string securityPersonnel2 = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSecurityPersonnel2() {
+      
+      securityPersonnel2_ = getDefaultInstance().getSecurityPersonnel2();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string securityPersonnel2 = 2;</code>
+     * @param value The bytes for securityPersonnel2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSecurityPersonnel2Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      securityPersonnel2_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object securityPersonnel3_ = "";
+    /**
+     * <code>string securityPersonnel3 = 3;</code>
+     * @return The securityPersonnel3.
+     */
+    public java.lang.String getSecurityPersonnel3() {
+      java.lang.Object ref = securityPersonnel3_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        securityPersonnel3_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string securityPersonnel3 = 3;</code>
+     * @return The bytes for securityPersonnel3.
+     */
+    public com.google.protobuf.ByteString
+        getSecurityPersonnel3Bytes() {
+      java.lang.Object ref = securityPersonnel3_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        securityPersonnel3_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string securityPersonnel3 = 3;</code>
+     * @param value The securityPersonnel3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSecurityPersonnel3(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      securityPersonnel3_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string securityPersonnel3 = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSecurityPersonnel3() {
+      
+      securityPersonnel3_ = getDefaultInstance().getSecurityPersonnel3();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string securityPersonnel3 = 3;</code>
+     * @param value The bytes for securityPersonnel3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSecurityPersonnel3Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      securityPersonnel3_ = value;
       onChanged();
       return this;
     }

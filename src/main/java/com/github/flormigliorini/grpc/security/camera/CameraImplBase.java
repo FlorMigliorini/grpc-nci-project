@@ -1,12 +1,8 @@
 package com.github.flormigliorini.grpc.security.camera;
 
-import com.proto.camera.CameraRequest;
-import com.proto.camera.CameraResponse;
-import com.proto.camera.CameraServiceGrpc;
+import com.proto.camera.*;
 import io.grpc.stub.StreamObserver;
 
-public class CameraImplBase extends CameraServiceGrpc.CameraServiceImplBase {
-
-
-
+public abstract class CameraImplBase extends CameraServiceGrpc.CameraServiceImplBase {
+    public abstract void cameraIdent(CameraIdentMessage cameraIdentMessage, StreamObserver<CameraIdentResponse> responseObserver);
 }

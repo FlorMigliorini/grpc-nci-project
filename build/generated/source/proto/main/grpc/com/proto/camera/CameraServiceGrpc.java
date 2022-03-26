@@ -46,6 +46,37 @@ public final class CameraServiceGrpc {
     return getCameraMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.camera.CameraIdentMessage,
+      com.proto.camera.CameraIdentResponse> getCameraIdentMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CameraIdent",
+      requestType = com.proto.camera.CameraIdentMessage.class,
+      responseType = com.proto.camera.CameraIdentResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.proto.camera.CameraIdentMessage,
+      com.proto.camera.CameraIdentResponse> getCameraIdentMethod() {
+    io.grpc.MethodDescriptor<com.proto.camera.CameraIdentMessage, com.proto.camera.CameraIdentResponse> getCameraIdentMethod;
+    if ((getCameraIdentMethod = CameraServiceGrpc.getCameraIdentMethod) == null) {
+      synchronized (CameraServiceGrpc.class) {
+        if ((getCameraIdentMethod = CameraServiceGrpc.getCameraIdentMethod) == null) {
+          CameraServiceGrpc.getCameraIdentMethod = getCameraIdentMethod =
+              io.grpc.MethodDescriptor.<com.proto.camera.CameraIdentMessage, com.proto.camera.CameraIdentResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CameraIdent"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.camera.CameraIdentMessage.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.camera.CameraIdentResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CameraServiceMethodDescriptorSupplier("CameraIdent"))
+              .build();
+        }
+      }
+    }
+    return getCameraIdentMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -104,6 +135,16 @@ public final class CameraServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCameraMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     *Server streaming
+     * </pre>
+     */
+    public void cameraIdent(com.proto.camera.CameraIdentMessage request,
+        io.grpc.stub.StreamObserver<com.proto.camera.CameraIdentResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCameraIdentMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -113,6 +154,13 @@ public final class CameraServiceGrpc {
                 com.proto.camera.CameraRequest,
                 com.proto.camera.CameraResponse>(
                   this, METHODID_CAMERA)))
+          .addMethod(
+            getCameraIdentMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                com.proto.camera.CameraIdentMessage,
+                com.proto.camera.CameraIdentResponse>(
+                  this, METHODID_CAMERA_IDENT)))
           .build();
     }
   }
@@ -141,6 +189,17 @@ public final class CameraServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCameraMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     *Server streaming
+     * </pre>
+     */
+    public void cameraIdent(com.proto.camera.CameraIdentMessage request,
+        io.grpc.stub.StreamObserver<com.proto.camera.CameraIdentResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getCameraIdentMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -165,6 +224,17 @@ public final class CameraServiceGrpc {
     public com.proto.camera.CameraResponse camera(com.proto.camera.CameraRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCameraMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *Server streaming
+     * </pre>
+     */
+    public java.util.Iterator<com.proto.camera.CameraIdentResponse> cameraIdent(
+        com.proto.camera.CameraIdentMessage request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getCameraIdentMethod(), getCallOptions(), request);
     }
   }
 
@@ -195,6 +265,7 @@ public final class CameraServiceGrpc {
   }
 
   private static final int METHODID_CAMERA = 0;
+  private static final int METHODID_CAMERA_IDENT = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -216,6 +287,10 @@ public final class CameraServiceGrpc {
         case METHODID_CAMERA:
           serviceImpl.camera((com.proto.camera.CameraRequest) request,
               (io.grpc.stub.StreamObserver<com.proto.camera.CameraResponse>) responseObserver);
+          break;
+        case METHODID_CAMERA_IDENT:
+          serviceImpl.cameraIdent((com.proto.camera.CameraIdentMessage) request,
+              (io.grpc.stub.StreamObserver<com.proto.camera.CameraIdentResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -239,7 +314,7 @@ public final class CameraServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.proto.camera.CameraOuterClass.getDescriptor();
+      return com.proto.camera.Camera.getDescriptor();
     }
 
     @java.lang.Override
@@ -279,6 +354,7 @@ public final class CameraServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CameraServiceFileDescriptorSupplier())
               .addMethod(getCameraMethod())
+              .addMethod(getCameraIdentMethod())
               .build();
         }
       }

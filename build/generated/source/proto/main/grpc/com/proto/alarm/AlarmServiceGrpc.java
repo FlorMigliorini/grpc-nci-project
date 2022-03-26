@@ -22,7 +22,7 @@ public final class AlarmServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "Alarm",
       requestType = com.proto.alarm.AlarmRequest.class,
       responseType = com.proto.alarm.AlarmResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
   public static io.grpc.MethodDescriptor<com.proto.alarm.AlarmRequest,
       com.proto.alarm.AlarmResponse> getAlarmMethod() {
     io.grpc.MethodDescriptor<com.proto.alarm.AlarmRequest, com.proto.alarm.AlarmResponse> getAlarmMethod;
@@ -31,7 +31,7 @@ public final class AlarmServiceGrpc {
         if ((getAlarmMethod = AlarmServiceGrpc.getAlarmMethod) == null) {
           AlarmServiceGrpc.getAlarmMethod = getAlarmMethod =
               io.grpc.MethodDescriptor.<com.proto.alarm.AlarmRequest, com.proto.alarm.AlarmResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Alarm"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -95,17 +95,20 @@ public final class AlarmServiceGrpc {
   public static abstract class AlarmServiceImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *Bi-directional
+     * </pre>
      */
-    public void alarm(com.proto.alarm.AlarmRequest request,
+    public io.grpc.stub.StreamObserver<com.proto.alarm.AlarmRequest> alarm(
         io.grpc.stub.StreamObserver<com.proto.alarm.AlarmResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAlarmMethod(), responseObserver);
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getAlarmMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getAlarmMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
               new MethodHandlers<
                 com.proto.alarm.AlarmRequest,
                 com.proto.alarm.AlarmResponse>(
@@ -129,11 +132,14 @@ public final class AlarmServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bi-directional
+     * </pre>
      */
-    public void alarm(com.proto.alarm.AlarmRequest request,
+    public io.grpc.stub.StreamObserver<com.proto.alarm.AlarmRequest> alarm(
         io.grpc.stub.StreamObserver<com.proto.alarm.AlarmResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAlarmMethod(), getCallOptions()), request, responseObserver);
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getAlarmMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -150,13 +156,6 @@ public final class AlarmServiceGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new AlarmServiceBlockingStub(channel, callOptions);
     }
-
-    /**
-     */
-    public com.proto.alarm.AlarmResponse alarm(com.proto.alarm.AlarmRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAlarmMethod(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -171,14 +170,6 @@ public final class AlarmServiceGrpc {
     protected AlarmServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new AlarmServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.proto.alarm.AlarmResponse> alarm(
-        com.proto.alarm.AlarmRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAlarmMethod(), getCallOptions()), request);
     }
   }
 
@@ -201,10 +192,6 @@ public final class AlarmServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ALARM:
-          serviceImpl.alarm((com.proto.alarm.AlarmRequest) request,
-              (io.grpc.stub.StreamObserver<com.proto.alarm.AlarmResponse>) responseObserver);
-          break;
         default:
           throw new AssertionError();
       }
@@ -215,6 +202,9 @@ public final class AlarmServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_ALARM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.alarm(
+              (io.grpc.stub.StreamObserver<com.proto.alarm.AlarmResponse>) responseObserver);
         default:
           throw new AssertionError();
       }

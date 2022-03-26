@@ -5,16 +5,17 @@ package logger;
 option java_package = "com.proto.logger";
 option java_multiple_files = true;
 
-
 message LoggerRequest{
   string request = 1;
 }
 
 message LoggerResponse{
-  string result = 1;
+  string loggerMsg = 1;
+  string loggerDay = 2;
+  string loggerTimer = 3;
 }
 
 service LoggerService{
-
-  rpc Logger(LoggerRequest) returns (LoggerResponse){};
+  //client streaming
+  rpc Logger(stream LoggerRequest) returns (LoggerResponse){};
 }

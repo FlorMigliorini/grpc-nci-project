@@ -8,14 +8,38 @@ public interface AlarmResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string result = 1;</code>
-   * @return The result.
+   * <code>string securityPersonnel1 = 1;</code>
+   * @return The securityPersonnel1.
    */
-  java.lang.String getResult();
+  java.lang.String getSecurityPersonnel1();
   /**
-   * <code>string result = 1;</code>
-   * @return The bytes for result.
+   * <code>string securityPersonnel1 = 1;</code>
+   * @return The bytes for securityPersonnel1.
    */
   com.google.protobuf.ByteString
-      getResultBytes();
+      getSecurityPersonnel1Bytes();
+
+  /**
+   * <code>string securityPersonnel2 = 2;</code>
+   * @return The securityPersonnel2.
+   */
+  java.lang.String getSecurityPersonnel2();
+  /**
+   * <code>string securityPersonnel2 = 2;</code>
+   * @return The bytes for securityPersonnel2.
+   */
+  com.google.protobuf.ByteString
+      getSecurityPersonnel2Bytes();
+
+  /**
+   * <code>string securityPersonnel3 = 3;</code>
+   * @return The securityPersonnel3.
+   */
+  java.lang.String getSecurityPersonnel3();
+  /**
+   * <code>string securityPersonnel3 = 3;</code>
+   * @return The bytes for securityPersonnel3.
+   */
+  com.google.protobuf.ByteString
+      getSecurityPersonnel3Bytes();
 }

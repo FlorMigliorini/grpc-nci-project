@@ -8,14 +8,38 @@ public interface LoggerResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string result = 1;</code>
-   * @return The result.
+   * <code>string loggerMsg = 1;</code>
+   * @return The loggerMsg.
    */
-  java.lang.String getResult();
+  java.lang.String getLoggerMsg();
   /**
-   * <code>string result = 1;</code>
-   * @return The bytes for result.
+   * <code>string loggerMsg = 1;</code>
+   * @return The bytes for loggerMsg.
    */
   com.google.protobuf.ByteString
-      getResultBytes();
+      getLoggerMsgBytes();
+
+  /**
+   * <code>string loggerDay = 2;</code>
+   * @return The loggerDay.
+   */
+  java.lang.String getLoggerDay();
+  /**
+   * <code>string loggerDay = 2;</code>
+   * @return The bytes for loggerDay.
+   */
+  com.google.protobuf.ByteString
+      getLoggerDayBytes();
+
+  /**
+   * <code>string loggerTimer = 3;</code>
+   * @return The loggerTimer.
+   */
+  java.lang.String getLoggerTimer();
+  /**
+   * <code>string loggerTimer = 3;</code>
+   * @return The bytes for loggerTimer.
+   */
+  com.google.protobuf.ByteString
+      getLoggerTimerBytes();
 }

@@ -22,7 +22,7 @@ public final class LoggerServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "Logger",
       requestType = com.proto.logger.LoggerRequest.class,
       responseType = com.proto.logger.LoggerResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
   public static io.grpc.MethodDescriptor<com.proto.logger.LoggerRequest,
       com.proto.logger.LoggerResponse> getLoggerMethod() {
     io.grpc.MethodDescriptor<com.proto.logger.LoggerRequest, com.proto.logger.LoggerResponse> getLoggerMethod;
@@ -31,7 +31,7 @@ public final class LoggerServiceGrpc {
         if ((getLoggerMethod = LoggerServiceGrpc.getLoggerMethod) == null) {
           LoggerServiceGrpc.getLoggerMethod = getLoggerMethod =
               io.grpc.MethodDescriptor.<com.proto.logger.LoggerRequest, com.proto.logger.LoggerResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Logger"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -95,17 +95,20 @@ public final class LoggerServiceGrpc {
   public static abstract class LoggerServiceImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *client streaming
+     * </pre>
      */
-    public void logger(com.proto.logger.LoggerRequest request,
+    public io.grpc.stub.StreamObserver<com.proto.logger.LoggerRequest> logger(
         io.grpc.stub.StreamObserver<com.proto.logger.LoggerResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLoggerMethod(), responseObserver);
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getLoggerMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getLoggerMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncClientStreamingCall(
               new MethodHandlers<
                 com.proto.logger.LoggerRequest,
                 com.proto.logger.LoggerResponse>(
@@ -129,11 +132,14 @@ public final class LoggerServiceGrpc {
     }
 
     /**
+     * <pre>
+     *client streaming
+     * </pre>
      */
-    public void logger(com.proto.logger.LoggerRequest request,
+    public io.grpc.stub.StreamObserver<com.proto.logger.LoggerRequest> logger(
         io.grpc.stub.StreamObserver<com.proto.logger.LoggerResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getLoggerMethod(), getCallOptions()), request, responseObserver);
+      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
+          getChannel().newCall(getLoggerMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -150,13 +156,6 @@ public final class LoggerServiceGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new LoggerServiceBlockingStub(channel, callOptions);
     }
-
-    /**
-     */
-    public com.proto.logger.LoggerResponse logger(com.proto.logger.LoggerRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getLoggerMethod(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -171,14 +170,6 @@ public final class LoggerServiceGrpc {
     protected LoggerServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new LoggerServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.proto.logger.LoggerResponse> logger(
-        com.proto.logger.LoggerRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getLoggerMethod(), getCallOptions()), request);
     }
   }
 
@@ -201,10 +192,6 @@ public final class LoggerServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_LOGGER:
-          serviceImpl.logger((com.proto.logger.LoggerRequest) request,
-              (io.grpc.stub.StreamObserver<com.proto.logger.LoggerResponse>) responseObserver);
-          break;
         default:
           throw new AssertionError();
       }
@@ -215,6 +202,9 @@ public final class LoggerServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_LOGGER:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.logger(
+              (io.grpc.stub.StreamObserver<com.proto.logger.LoggerResponse>) responseObserver);
         default:
           throw new AssertionError();
       }

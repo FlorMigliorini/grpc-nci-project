@@ -16,7 +16,7 @@
 //        //create response
 //        String result = "The camera is " + ID;
 //        CameraResponse cameraResponse = CameraResponse.newBuilder()
-//                .setResult(result)
+//                .setResult(re.sult)
 //                .build();
 //
 //        //response back to the client

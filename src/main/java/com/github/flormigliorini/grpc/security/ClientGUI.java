@@ -1,5 +1,12 @@
 package com.github.flormigliorini.grpc.security;
 
+import com.github.flormigliorini.grpc.security.camera.Camera;
+import com.proto.camera.CameraRequest;
+import com.proto.camera.CameraResponse;
+import com.proto.camera.CameraServiceGrpc;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -33,7 +40,7 @@ public class ClientGUI implements ActionListener{
         panel.add(entry1);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        JButton button = new JButton("Invoke Camera Service.");
+        JButton button = new JButton("Invoke Camera Service");
         button.addActionListener(this);
         panel.add(button);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -142,6 +149,29 @@ public class ClientGUI implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+        String label = button.getActionCommand();
 
+        if (label.equals("Invoke Camera Service")) {
+            System.out.println("camera to be invoked");
+
+
+            ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
+            CameraServiceGrpc.CameraServiceBlockingStub blockingStub = CameraServiceGrpc.newBlockingStub(channel);
+
+            //preparing message to send
+            // ds.service1.RequestMessage request = ds.service1.RequestMessage.newBuilder().setText(entry1.getText()).build();
+            CameraRequest cameraRequest = CameraRequest.newBuilder().setRequest(Integer.parseInt(entry1.getText())).build();
+            //retreving reply from service
+            //ds.service1.ResponseMessage response = blockingStub.service1Do(request);
+            CameraResponse cameraResponse = blockingStub.camera(cameraRequest);
+
+            reply1.setText(String.valueOf(cameraResponse.getResult()));
+
+        } else if (label.equals("Invoke Alarm")) {
+            System.out.println("Alarm to be invoked ...");
+        } else {
+
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.proto.camera.CameraResponse;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import java.lang.Math;
 
 import java.io.IOException;
 
@@ -12,7 +13,7 @@ public class Camera extends CameraImplBase{
     public static void main(String[] args) throws InterruptedException, IOException {
         Camera camera = new Camera();
 
-        int port = 50051;
+        int port = 50055;
 
         Server server = ServerBuilder.forPort(port)
                 .addService(camera)
@@ -28,11 +29,17 @@ public class Camera extends CameraImplBase{
 
     @Override
     public void camera(CameraRequest request, StreamObserver<CameraResponse> responseObserver) {
+        int max=10, min=1;
+        int randomNumber = (int) (Math.random()*(max - min + 1) + min);
 
         //prepare the value to be set back
-        int result = request.getID().length();
-
-
+       // String result = randomNumber + request.getRequest();
+        String result;
+        if (randomNumber > request.getRequest()){
+            result = randomNumber + " is greater than " + request.getRequest();
+        } else{
+            result = randomNumber + " is less than " + request.getRequest();
+        }
         //preparing the response message
         //ResponseMessage reply = ResponseMessage.newBuilder().setLength(length).build();
         CameraResponse cameraResponse = CameraResponse.newBuilder()
@@ -40,10 +47,11 @@ public class Camera extends CameraImplBase{
                 .build();
 
         //response back to the client
-        responseObserver.onNext( cameraResponse );
+        responseObserver.onNext(cameraResponse);
 
         //complete the RCP call
         responseObserver.onCompleted();
+
 
     }
 }

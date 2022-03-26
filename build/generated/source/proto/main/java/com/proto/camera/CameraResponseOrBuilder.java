@@ -8,8 +8,14 @@ public interface CameraResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 result = 1;</code>
+   * <code>string result = 1;</code>
    * @return The result.
    */
-  int getResult();
+  java.lang.String getResult();
+  /**
+   * <code>string result = 1;</code>
+   * @return The bytes for result.
+   */
+  com.google.protobuf.ByteString
+      getResultBytes();
 }

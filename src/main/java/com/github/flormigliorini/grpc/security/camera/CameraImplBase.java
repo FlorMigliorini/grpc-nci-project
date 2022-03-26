@@ -7,4 +7,6 @@ import io.grpc.stub.StreamObserver;
 
 public class CameraImplBase extends CameraServiceGrpc.CameraServiceImplBase {
 
+
+
 }

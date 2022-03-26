@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CameraResponse() {
+    result_ = "";
   }
 
   @java.lang.Override
@@ -48,9 +49,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            result_ = input.readInt32();
+            result_ = s;
             break;
           }
           default: {
@@ -74,26 +76,53 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
+    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.proto.camera.Camera.internal_static_camera_CameraResponse_fieldAccessorTable
+    return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.proto.camera.CameraResponse.class, com.proto.camera.CameraResponse.Builder.class);
   }
 
   public static final int RESULT_FIELD_NUMBER = 1;
-  private int result_;
+  private volatile java.lang.Object result_;
   /**
-   * <code>int32 result = 1;</code>
+   * <code>string result = 1;</code>
    * @return The result.
    */
   @java.lang.Override
-  public int getResult() {
-    return result_;
+  public java.lang.String getResult() {
+    java.lang.Object ref = result_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      result_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string result = 1;</code>
+   * @return The bytes for result.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getResultBytes() {
+    java.lang.Object ref = result_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      result_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -110,8 +139,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (result_ != 0) {
-      output.writeInt32(1, result_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(result_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, result_);
     }
     unknownFields.writeTo(output);
   }
@@ -122,9 +151,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (result_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, result_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(result_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, result_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -141,8 +169,8 @@ private static final long serialVersionUID = 0L;
     }
     com.proto.camera.CameraResponse other = (com.proto.camera.CameraResponse) obj;
 
-    if (getResult()
-        != other.getResult()) return false;
+    if (!getResult()
+        .equals(other.getResult())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -155,7 +183,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + RESULT_FIELD_NUMBER;
-    hash = (53 * hash) + getResult();
+    hash = (53 * hash) + getResult().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -260,13 +288,13 @@ private static final long serialVersionUID = 0L;
       com.proto.camera.CameraResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
+      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.proto.camera.Camera.internal_static_camera_CameraResponse_fieldAccessorTable
+      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.proto.camera.CameraResponse.class, com.proto.camera.CameraResponse.Builder.class);
     }
@@ -289,7 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      result_ = 0;
+      result_ = "";
 
       return this;
     }
@@ -297,7 +325,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.proto.camera.Camera.internal_static_camera_CameraResponse_descriptor;
+      return com.proto.camera.CameraOuterClass.internal_static_camera_CameraResponse_descriptor;
     }
 
     @java.lang.Override
@@ -366,8 +394,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.proto.camera.CameraResponse other) {
       if (other == com.proto.camera.CameraResponse.getDefaultInstance()) return this;
-      if (other.getResult() != 0) {
-        setResult(other.getResult());
+      if (!other.getResult().isEmpty()) {
+        result_ = other.result_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -398,33 +427,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int result_ ;
+    private java.lang.Object result_ = "";
     /**
-     * <code>int32 result = 1;</code>
+     * <code>string result = 1;</code>
      * @return The result.
      */
-    @java.lang.Override
-    public int getResult() {
-      return result_;
+    public java.lang.String getResult() {
+      java.lang.Object ref = result_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        result_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 result = 1;</code>
+     * <code>string result = 1;</code>
+     * @return The bytes for result.
+     */
+    public com.google.protobuf.ByteString
+        getResultBytes() {
+      java.lang.Object ref = result_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        result_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string result = 1;</code>
      * @param value The result to set.
      * @return This builder for chaining.
      */
-    public Builder setResult(int value) {
-      
+    public Builder setResult(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       result_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 result = 1;</code>
+     * <code>string result = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearResult() {
       
-      result_ = 0;
+      result_ = getDefaultInstance().getResult();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string result = 1;</code>
+     * @param value The bytes for result to set.
+     * @return This builder for chaining.
+     */
+    public Builder setResultBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      result_ = value;
       onChanged();
       return this;
     }

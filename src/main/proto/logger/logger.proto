@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package logger;
+
+option java_package = "com.proto.logger";
+option java_multiple_files = true;
+
+
+message LoggerRequest{
+  string request = 1;
+}
+
+message LoggerResponse{
+  string result = 1;
+}
+
+service LoggerService{
+
+  rpc Logger(LoggerRequest) returns (LoggerResponse){};
+}

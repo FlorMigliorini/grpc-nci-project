@@ -51,7 +51,5 @@ public class Camera extends CameraImplBase{
 
         //complete the RCP call
         responseObserver.onCompleted();
-
-
     }
 }

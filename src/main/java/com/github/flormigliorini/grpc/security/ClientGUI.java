@@ -4,6 +4,9 @@ import com.github.flormigliorini.grpc.security.camera.Camera;
 import com.proto.camera.CameraRequest;
 import com.proto.camera.CameraResponse;
 import com.proto.camera.CameraServiceGrpc;
+import com.proto.logger.LoggerRequest;
+import com.proto.logger.LoggerResponse;
+import com.proto.logger.LoggerServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -61,19 +64,19 @@ public class ClientGUI implements ActionListener{
 
         BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-        JLabel label = new JLabel("Enter the max number of people: ")	;
+        JLabel label = new JLabel("Is there more people than allowed?(YES/NO): ")	;
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
-        entry2 = new JTextField("",10);
+        panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        entry2 = new JTextField("",5);
         panel.add(entry2);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        panel.add(Box.createRigidArea(new Dimension(5, 0)));
 
-        JButton button = new JButton("Invoke Alarm Service.");
+        JButton button = new JButton("Invoke Logger Service");
         button.addActionListener(this);
         panel.add(button);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        reply2 = new JTextField("", 10);
+        reply2 = new JTextField("", 20);
         reply2 .setEditable(false);
         panel.add(reply2 );
 
@@ -168,8 +171,19 @@ public class ClientGUI implements ActionListener{
 
             reply1.setText(String.valueOf(cameraResponse.getResult()));
 
-        } else if (label.equals("Invoke Alarm")) {
-            System.out.println("Alarm to be invoked ...");
+        } else if (label.equals("Invoke Logger Service")) {
+            System.out.println("Logger to be invoked");
+
+            ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50056).usePlaintext().build();
+            LoggerServiceGrpc.LoggerServiceBlockingStub blockingStub = LoggerServiceGrpc.newBlockingStub(channel);
+
+            //preparing message to send
+            LoggerRequest loggerRequest = LoggerRequest.newBuilder().setRequest(entry1.getText()).build();
+
+            //retreving reply from service
+            LoggerResponse loggerResponse = blockingStub.logger(loggerRequest);
+
+            reply1.setText(String.valueOf(loggerResponse.getResult()));
         } else {
 
         }

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package camera;
+
+option java_package = "com.proto.alarm";
+option java_multiple_files = true;
+
+message AlarmRequest{
+  string request = 1;
+}
+
+message AlarmResponse{
+  string result = 1;
+}
+
+service AlarmService{
+
+  rpc Alarm(AlarmRequest) returns (AlarmResponse){};
+}

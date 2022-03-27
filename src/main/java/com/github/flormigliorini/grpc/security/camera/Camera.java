@@ -8,7 +8,6 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
-import javax.swing.*;
 import java.lang.Math;
 
 import java.io.IOException;

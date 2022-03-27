@@ -14,9 +14,7 @@ import io.grpc.stub.StreamObserver;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

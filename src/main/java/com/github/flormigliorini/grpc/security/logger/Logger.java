@@ -10,7 +10,6 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
-import java.lang.Math;
 import java.util.ArrayList;
 
 public class Logger extends LoggerImpBase {

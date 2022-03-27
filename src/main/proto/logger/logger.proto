@@ -11,8 +11,8 @@ message LoggerRequest{
 
 message LoggerResponse{
   string loggerMsg = 1;
-  string loggerDay = 2;
-  string loggerTimer = 3;
+//  string loggerDay = 2;
+//  string loggerTimer = 3;
 }
 
 service LoggerService{

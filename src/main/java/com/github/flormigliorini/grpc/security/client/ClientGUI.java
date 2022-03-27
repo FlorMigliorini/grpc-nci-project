@@ -4,7 +4,6 @@ import com.proto.camera.CameraIdentMessage;
 import com.proto.camera.CameraRequest;
 import com.proto.camera.CameraResponse;
 import com.proto.camera.CameraServiceGrpc;
-import com.proto.logger.Logger;
 import com.proto.logger.LoggerRequest;
 import com.proto.logger.LoggerResponse;
 import com.proto.logger.LoggerServiceGrpc;
@@ -12,17 +11,17 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.awt.Dimension;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class ClientGUI implements ActionListener{
+public class ClientGUI extends JPanel implements ActionListener{
 
     private JTextField entryCamIdent, replyCamIdent;
     private JTextField entryCamService, replyCamService;
@@ -37,7 +36,7 @@ public class ClientGUI implements ActionListener{
         JLabel label = new JLabel("Active Camera")	;
         panel.add(label);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
 //        entryCamIdent = new JTextField("",5);
 //        panel.add(entryCamIdent);
 //        panel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -68,16 +67,17 @@ public class ClientGUI implements ActionListener{
 
         BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-        JLabel label = new JLabel("What is the maximum people?(1-10): ")	;
+        JLabel label = new JLabel("What is the maximum people?(1-10): ");
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(15, 0)));
+        panel.add(Box.createRigidArea(new Dimension(15, 10)));
         entryCamService = new JTextField("",5);
         panel.add(entryCamService);
-        panel.add(Box.createRigidArea(new Dimension(5, 5)));
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
         JButton button = new JButton("Invoke Camera Service");
         button.addActionListener(this);
         panel.add(button);
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
         replyCamService = new JTextField("", 10);
@@ -92,25 +92,35 @@ public class ClientGUI implements ActionListener{
 
     private JPanel getService3JPanel() {
 
+        this.setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+        JLabel label = new JLabel("Report incident for camera 01?");
+        label.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+        label.setHorizontalAlignment(JLabel.LEFT);
+        entryLogger1 = new JTextField("");
+        entryLogger1.setPreferredSize(new Dimension(10, 0));
+        entryLogger1.setAlignmentX(JTextField.RIGHT_ALIGNMENT);
+        entryLogger1.setHorizontalAlignment(JTextField.RIGHT);
+        this.add(label);
+        this.add(Box.createRigidArea(new Dimension(10, 0)));
+        this.add(entryLogger1);
+        this.add(Box.createRigidArea(new Dimension(300, 5)));
+
+        return this;
+    }
+    private JPanel getService3_1JPanel() {
+
         JPanel panel = new JPanel();
 
         BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-        JLabel label = new JLabel("Is there more than maximum people allowed?(YES/NO)")	;
+        JLabel label = new JLabel("Report incident for camera 02?")	;
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
-        entryLogger1 = new JTextField("",5);
-        panel.add(entryLogger1);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
-
-        JLabel label2 = new JLabel("?(YES/NO)")	;
-        panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(5, 5)));
-        entryLogger2 = new JTextField("",5);
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        entryLogger2 = new JTextField("",10);
         panel.add(entryLogger2);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        JButton button = new JButton("Invoke Logger Service");
+        JButton button = new JButton("Invoke Logger");
         button.addActionListener(this);
         panel.add(button);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -118,8 +128,6 @@ public class ClientGUI implements ActionListener{
         replyLogger = new JTextField("", 10);
         replyLogger .setEditable(false);
         panel.add(replyLogger);
-
-        panel.setLayout(boxlayout);
 
         return panel;
 
@@ -150,9 +158,10 @@ public class ClientGUI implements ActionListener{
         // Set border for the panel
         panel.setBorder(new EmptyBorder(new Insets(50, 100, 50, 100)));
 
-        panel.add( getService1JPanel() );
-        panel.add( getService2JPanel() );
-        panel.add( getService3JPanel() );
+        panel.add(getService1JPanel());
+        panel.add(getService2JPanel());
+        panel.add(getService3JPanel());
+        panel.add(getService3_1JPanel());
 
         // Set size for the frame
         frame.setSize(300, 300);
@@ -212,20 +221,23 @@ public class ClientGUI implements ActionListener{
                     });
         }
         else if (label.equals("Invoke Camera Service")) {
-            System.out.println("Camera to be invoked - Unary - done");
+            System.out.println("Camera to be invoked");
             ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
             CameraServiceGrpc.CameraServiceBlockingStub blockingStub = CameraServiceGrpc.newBlockingStub(channel);
 
-            //preparing message to send
-            CameraRequest cameraRequest = CameraRequest.newBuilder().setRequest(Integer.parseInt(entryCamService.getText())).build();
-            //retreving reply from service
-            CameraResponse cameraResponse = blockingStub.camera(cameraRequest);
+            if (entryCamService.getText().equals("")){
+                replyCamService.setText("Please enter number of people");
+            }else{
+                //preparing message to send
+                CameraRequest cameraRequest = CameraRequest.newBuilder().setRequest(Integer.parseInt(entryCamService.getText())).build();
+                //retreving reply from service
+                CameraResponse cameraResponse = blockingStub.camera(cameraRequest);
 
-            replyCamService.setText(String.valueOf(cameraResponse.getResult()));
+                replyCamService.setText(String.valueOf(cameraResponse.getResult()));
+            }
 
-
-        } else if(label.equals("Invoke Logger Service")) {
-            System.out.println("Invoke Logger Service - change");
+        } else if(label.equals("Invoke Logger")) {
+            System.out.println("Invoke Logger Service");
 
             CountDownLatch latch = new CountDownLatch(1);
 
@@ -235,7 +247,8 @@ public class ClientGUI implements ActionListener{
             StreamObserver<LoggerResponse> responseStreamObserver = new StreamObserver<LoggerResponse>() {
                 @Override
                 public void onNext(LoggerResponse value) {
-                    System.out.println("test " + value.getLoggerMsg() + value.getLoggerDay() + value.getLoggerTimer());
+                    //replyLogger.setText(LoggerResponse.newBuilder().getLoggerMsg());
+                    System.out.println("test " + value.getLoggerMsg());
                 }
 
                 @Override
@@ -251,12 +264,12 @@ public class ClientGUI implements ActionListener{
 
             StreamObserver<LoggerRequest> requestStreamObserver = asyncClient.logger(responseStreamObserver);
             try {
-                requestStreamObserver.onNext(LoggerRequest.newBuilder().setRequest("125").build());
+                requestStreamObserver.onNext(LoggerRequest.newBuilder().setRequest(entryLogger1.getText()).build());
                 Thread.sleep(500);
 
-                requestStreamObserver.onNext(LoggerRequest.newBuilder().setRequest("112").build());
-                Thread.sleep(500);
+                requestStreamObserver.onNext(LoggerRequest.newBuilder().setRequest(entryLogger2.getText()).build());
 
+                requestStreamObserver.onCompleted();
 
                 Thread.sleep(10000);
 

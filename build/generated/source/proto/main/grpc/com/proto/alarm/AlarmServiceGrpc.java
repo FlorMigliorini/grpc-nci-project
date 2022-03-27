@@ -12,7 +12,7 @@ public final class AlarmServiceGrpc {
 
   private AlarmServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "camera.AlarmService";
+  public static final String SERVICE_NAME = "alarm.AlarmService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.proto.alarm.AlarmRequest,
@@ -96,7 +96,7 @@ public final class AlarmServiceGrpc {
 
     /**
      * <pre>
-     *Bi-directional
+     *unary
      * </pre>
      */
     public io.grpc.stub.StreamObserver<com.proto.alarm.AlarmRequest> alarm(
@@ -133,7 +133,7 @@ public final class AlarmServiceGrpc {
 
     /**
      * <pre>
-     *Bi-directional
+     *unary
      * </pre>
      */
     public io.grpc.stub.StreamObserver<com.proto.alarm.AlarmRequest> alarm(

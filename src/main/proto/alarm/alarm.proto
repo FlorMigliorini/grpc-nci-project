@@ -1,23 +1,19 @@
 syntax = "proto3";
 
-package camera;
+package alarm;
 
 option java_package = "com.proto.alarm";
 option java_multiple_files = true;
 
 message AlarmRequest{
-  string loggerMsg = 1;
-  string loggerDay = 2;
-  string loggerTimer = 3;
+  string request = 1;
 }
 
 message AlarmResponse{
-  string securityPersonnel1 = 1;
-  string securityPersonnel2 = 2;
-  string securityPersonnel3 = 3;
+  string alarmResponse = 1;
 }
 
 service AlarmService{
-  //Bi-directional
+  //unary
   rpc Alarm(stream AlarmRequest) returns (stream AlarmResponse){};
 }

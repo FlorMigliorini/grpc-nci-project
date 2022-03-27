@@ -17,8 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private LoggerResponse() {
     loggerMsg_ = "";
-    loggerDay_ = "";
-    loggerTimer_ = "";
   }
 
   @java.lang.Override
@@ -57,18 +55,6 @@ private static final long serialVersionUID = 0L;
             loggerMsg_ = s;
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            loggerDay_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            loggerTimer_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -104,6 +90,11 @@ private static final long serialVersionUID = 0L;
   public static final int LOGGERMSG_FIELD_NUMBER = 1;
   private volatile java.lang.Object loggerMsg_;
   /**
+   * <pre>
+   *  string loggerDay = 2;
+   *  string loggerTimer = 3;
+   * </pre>
+   *
    * <code>string loggerMsg = 1;</code>
    * @return The loggerMsg.
    */
@@ -121,6 +112,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *  string loggerDay = 2;
+   *  string loggerTimer = 3;
+   * </pre>
+   *
    * <code>string loggerMsg = 1;</code>
    * @return The bytes for loggerMsg.
    */
@@ -133,82 +129,6 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       loggerMsg_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int LOGGERDAY_FIELD_NUMBER = 2;
-  private volatile java.lang.Object loggerDay_;
-  /**
-   * <code>string loggerDay = 2;</code>
-   * @return The loggerDay.
-   */
-  @java.lang.Override
-  public java.lang.String getLoggerDay() {
-    java.lang.Object ref = loggerDay_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      loggerDay_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string loggerDay = 2;</code>
-   * @return The bytes for loggerDay.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getLoggerDayBytes() {
-    java.lang.Object ref = loggerDay_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      loggerDay_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int LOGGERTIMER_FIELD_NUMBER = 3;
-  private volatile java.lang.Object loggerTimer_;
-  /**
-   * <code>string loggerTimer = 3;</code>
-   * @return The loggerTimer.
-   */
-  @java.lang.Override
-  public java.lang.String getLoggerTimer() {
-    java.lang.Object ref = loggerTimer_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      loggerTimer_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string loggerTimer = 3;</code>
-   * @return The bytes for loggerTimer.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getLoggerTimerBytes() {
-    java.lang.Object ref = loggerTimer_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      loggerTimer_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -232,12 +152,6 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerMsg_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, loggerMsg_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerDay_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, loggerDay_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerTimer_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, loggerTimer_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -249,12 +163,6 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerMsg_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, loggerMsg_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerDay_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, loggerDay_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(loggerTimer_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, loggerTimer_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -273,10 +181,6 @@ private static final long serialVersionUID = 0L;
 
     if (!getLoggerMsg()
         .equals(other.getLoggerMsg())) return false;
-    if (!getLoggerDay()
-        .equals(other.getLoggerDay())) return false;
-    if (!getLoggerTimer()
-        .equals(other.getLoggerTimer())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -290,10 +194,6 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + LOGGERMSG_FIELD_NUMBER;
     hash = (53 * hash) + getLoggerMsg().hashCode();
-    hash = (37 * hash) + LOGGERDAY_FIELD_NUMBER;
-    hash = (53 * hash) + getLoggerDay().hashCode();
-    hash = (37 * hash) + LOGGERTIMER_FIELD_NUMBER;
-    hash = (53 * hash) + getLoggerTimer().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -429,10 +329,6 @@ private static final long serialVersionUID = 0L;
       super.clear();
       loggerMsg_ = "";
 
-      loggerDay_ = "";
-
-      loggerTimer_ = "";
-
       return this;
     }
 
@@ -460,8 +356,6 @@ private static final long serialVersionUID = 0L;
     public com.proto.logger.LoggerResponse buildPartial() {
       com.proto.logger.LoggerResponse result = new com.proto.logger.LoggerResponse(this);
       result.loggerMsg_ = loggerMsg_;
-      result.loggerDay_ = loggerDay_;
-      result.loggerTimer_ = loggerTimer_;
       onBuilt();
       return result;
     }
@@ -514,14 +408,6 @@ private static final long serialVersionUID = 0L;
         loggerMsg_ = other.loggerMsg_;
         onChanged();
       }
-      if (!other.getLoggerDay().isEmpty()) {
-        loggerDay_ = other.loggerDay_;
-        onChanged();
-      }
-      if (!other.getLoggerTimer().isEmpty()) {
-        loggerTimer_ = other.loggerTimer_;
-        onChanged();
-      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -553,6 +439,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object loggerMsg_ = "";
     /**
+     * <pre>
+     *  string loggerDay = 2;
+     *  string loggerTimer = 3;
+     * </pre>
+     *
      * <code>string loggerMsg = 1;</code>
      * @return The loggerMsg.
      */
@@ -569,6 +460,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *  string loggerDay = 2;
+     *  string loggerTimer = 3;
+     * </pre>
+     *
      * <code>string loggerMsg = 1;</code>
      * @return The bytes for loggerMsg.
      */
@@ -586,6 +482,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *  string loggerDay = 2;
+     *  string loggerTimer = 3;
+     * </pre>
+     *
      * <code>string loggerMsg = 1;</code>
      * @param value The loggerMsg to set.
      * @return This builder for chaining.
@@ -601,6 +502,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *  string loggerDay = 2;
+     *  string loggerTimer = 3;
+     * </pre>
+     *
      * <code>string loggerMsg = 1;</code>
      * @return This builder for chaining.
      */
@@ -611,6 +517,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *  string loggerDay = 2;
+     *  string loggerTimer = 3;
+     * </pre>
+     *
      * <code>string loggerMsg = 1;</code>
      * @param value The bytes for loggerMsg to set.
      * @return This builder for chaining.
@@ -623,158 +534,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       loggerMsg_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object loggerDay_ = "";
-    /**
-     * <code>string loggerDay = 2;</code>
-     * @return The loggerDay.
-     */
-    public java.lang.String getLoggerDay() {
-      java.lang.Object ref = loggerDay_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        loggerDay_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string loggerDay = 2;</code>
-     * @return The bytes for loggerDay.
-     */
-    public com.google.protobuf.ByteString
-        getLoggerDayBytes() {
-      java.lang.Object ref = loggerDay_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        loggerDay_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string loggerDay = 2;</code>
-     * @param value The loggerDay to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLoggerDay(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      loggerDay_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string loggerDay = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearLoggerDay() {
-      
-      loggerDay_ = getDefaultInstance().getLoggerDay();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string loggerDay = 2;</code>
-     * @param value The bytes for loggerDay to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLoggerDayBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      loggerDay_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object loggerTimer_ = "";
-    /**
-     * <code>string loggerTimer = 3;</code>
-     * @return The loggerTimer.
-     */
-    public java.lang.String getLoggerTimer() {
-      java.lang.Object ref = loggerTimer_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        loggerTimer_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string loggerTimer = 3;</code>
-     * @return The bytes for loggerTimer.
-     */
-    public com.google.protobuf.ByteString
-        getLoggerTimerBytes() {
-      java.lang.Object ref = loggerTimer_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        loggerTimer_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string loggerTimer = 3;</code>
-     * @param value The loggerTimer to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLoggerTimer(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      loggerTimer_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string loggerTimer = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearLoggerTimer() {
-      
-      loggerTimer_ = getDefaultInstance().getLoggerTimer();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string loggerTimer = 3;</code>
-     * @param value The bytes for loggerTimer to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLoggerTimerBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      loggerTimer_ = value;
       onChanged();
       return this;
     }

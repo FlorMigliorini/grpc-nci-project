@@ -7,6 +7,8 @@ import com.proto.camera.CameraResponse;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+
+import javax.swing.*;
 import java.lang.Math;
 
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class Camera extends CameraImplBase{
         int counter = 0;
         try{
            for (int i=0; i < 3; i++){
-               result = "/n" + " Camera " + counter + ": Cam0" + counter + ", room" + counter + " -> Active" + "\n";
+               result = "\n" + " Camera " + counter + ": Cam0" + counter + ", room" + counter + " -> Active" + "\n";
                counter++;
                CameraIdentResponse cameraIdentResponse = CameraIdentResponse.newBuilder()
                        .setCameraInfo(result)

@@ -4,42 +4,18 @@
 package com.proto.alarm;
 
 public interface AlarmResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:camera.AlarmResponse)
+    // @@protoc_insertion_point(interface_extends:alarm.AlarmResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string securityPersonnel1 = 1;</code>
-   * @return The securityPersonnel1.
+   * <code>string alarmResponse = 1;</code>
+   * @return The alarmResponse.
    */
-  java.lang.String getSecurityPersonnel1();
+  java.lang.String getAlarmResponse();
   /**
-   * <code>string securityPersonnel1 = 1;</code>
-   * @return The bytes for securityPersonnel1.
+   * <code>string alarmResponse = 1;</code>
+   * @return The bytes for alarmResponse.
    */
   com.google.protobuf.ByteString
-      getSecurityPersonnel1Bytes();
-
-  /**
-   * <code>string securityPersonnel2 = 2;</code>
-   * @return The securityPersonnel2.
-   */
-  java.lang.String getSecurityPersonnel2();
-  /**
-   * <code>string securityPersonnel2 = 2;</code>
-   * @return The bytes for securityPersonnel2.
-   */
-  com.google.protobuf.ByteString
-      getSecurityPersonnel2Bytes();
-
-  /**
-   * <code>string securityPersonnel3 = 3;</code>
-   * @return The securityPersonnel3.
-   */
-  java.lang.String getSecurityPersonnel3();
-  /**
-   * <code>string securityPersonnel3 = 3;</code>
-   * @return The bytes for securityPersonnel3.
-   */
-  com.google.protobuf.ByteString
-      getSecurityPersonnel3Bytes();
+      getAlarmResponseBytes();
 }

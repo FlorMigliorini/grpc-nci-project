@@ -33,15 +33,16 @@ public class Logger extends LoggerImpBase {
     @Override
     public StreamObserver<LoggerRequest> logger(StreamObserver<LoggerResponse> responseObserver) {
 
-        StreamObserver<LoggerRequest> streamObserver = new StreamObserver<LoggerRequest>() {
+        //StreamObserver<LoggerRequest> streamObserver = new StreamObserver<LoggerRequest>() {
 
+        return new StreamObserver<LoggerRequest>(){
 //            String result = "";
             ArrayList<String> list = new ArrayList();
 
             @Override
             public void onNext(LoggerRequest value) {
                 //client send a msg
-                System.out.println("receiving value: "+ value.getRequest());
+                System.out.println("receiving value: " + value.getRequest());
 
                 list.add(value.getRequest());
             }
@@ -54,14 +55,15 @@ public class Logger extends LoggerImpBase {
 
             @Override
             public void onCompleted() {
+                System.out.printf("receiving values \n" );
                //client is done
+                String entry1 = list.get(0);
+                String entry2 = list.get(1);
+
                 LoggerResponse reply = LoggerResponse.newBuilder()
                         .setLoggerMsg("Incident reported for both cameras")
-                        .setLoggerDay("Monday")
-                        .setLoggerTimer("12:30")
                         .build();
 
-                // System.out.println("mean "+ mean);
                 responseObserver.onNext(reply);
 
                 responseObserver.onCompleted();
@@ -75,7 +77,7 @@ public class Logger extends LoggerImpBase {
 //                responseObserver.onCompleted();
             }
         };
-        return streamObserver;
+       // return streamObserver;
     }
 //    @Override
 //    public void logger(LoggerRequest request, StreamObserver<LoggerResponse> responseObserver) {

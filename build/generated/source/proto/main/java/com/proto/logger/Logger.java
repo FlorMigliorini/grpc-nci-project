@@ -34,9 +34,8 @@ public final class Logger {
   static {
     java.lang.String[] descriptorData = {
       "\n\023logger/logger.proto\022\006logger\" \n\rLoggerR" +
-      "equest\022\017\n\007request\030\001 \001(\t\"K\n\016LoggerRespons" +
-      "e\022\021\n\tloggerMsg\030\001 \001(\t\022\021\n\tloggerDay\030\002 \001(\t\022" +
-      "\023\n\013loggerTimer\030\003 \001(\t2L\n\rLoggerService\022;\n" +
+      "equest\022\017\n\007request\030\001 \001(\t\"#\n\016LoggerRespons" +
+      "e\022\021\n\tloggerMsg\030\001 \001(\t2L\n\rLoggerService\022;\n" +
       "\006Logger\022\025.logger.LoggerRequest\032\026.logger." +
       "LoggerResponse\"\000(\001B\024\n\020com.proto.loggerP\001" +
       "b\006proto3"
@@ -56,7 +55,7 @@ public final class Logger {
     internal_static_logger_LoggerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_logger_LoggerResponse_descriptor,
-        new java.lang.String[] { "LoggerMsg", "LoggerDay", "LoggerTimer", });
+        new java.lang.String[] { "LoggerMsg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

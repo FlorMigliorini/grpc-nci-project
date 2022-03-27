@@ -19,13 +19,7 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class ClientGUI implements ActionListener{
@@ -40,27 +34,32 @@ public class ClientGUI implements ActionListener{
 
         BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-        JLabel label = new JLabel("Enter camera 01 ID?(Cam01): ")	;
+        JLabel label = new JLabel("Active Camera")	;
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
-        entryCamIdent = new JTextField("",5);
-        panel.add(entryCamIdent);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+//        entryCamIdent = new JTextField("",5);
+//        panel.add(entryCamIdent);
+//        panel.add(Box.createRigidArea(new Dimension(5, 0)));
 
-        JButton button = new JButton("Invoke Camera Identification Service");
+        JButton button = new JButton("CameraON");
         button.addActionListener(this);
         panel.add(button);
         panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-        replyCamIdent = new JTextField("", 30);
+        JButton buttonCam02 = new JButton("CameraOFF");
+        buttonCam02.addActionListener(this);
+        panel.add(buttonCam02);
+        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+
+        replyCamIdent = new JTextField();
+        replyCamIdent.setPreferredSize(new Dimension(200,100));
         replyCamIdent .setEditable(false);
         panel.add(replyCamIdent);
-        panel.add(Box.createRigidArea(new Dimension(30, 10)));
 
         panel.setLayout(boxlayout);
 
         return panel;
-
     }
 
     private JPanel getService2JPanel() {
@@ -74,7 +73,7 @@ public class ClientGUI implements ActionListener{
         panel.add(Box.createRigidArea(new Dimension(15, 0)));
         entryCamService = new JTextField("",5);
         panel.add(entryCamService);
-        panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        panel.add(Box.createRigidArea(new Dimension(5, 5)));
 
         JButton button = new JButton("Invoke Camera Service");
         button.addActionListener(this);
@@ -99,17 +98,17 @@ public class ClientGUI implements ActionListener{
 
         JLabel label = new JLabel("Is there more than maximum people allowed?(YES/NO)")	;
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
-        entryLogger1 = new JTextField("",10);
+        panel.add(Box.createRigidArea(new Dimension(5, 0)));
+        entryLogger1 = new JTextField("",5);
         panel.add(entryLogger1);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        panel.add(Box.createRigidArea(new Dimension(5, 0)));
 
-        JLabel label2 = new JLabel("Is there more than maximum people allowed?(YES/NO)")	;
+        JLabel label2 = new JLabel("?(YES/NO)")	;
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
-        entryLogger2 = new JTextField("",10);
+        panel.add(Box.createRigidArea(new Dimension(5, 5)));
+        entryLogger2 = new JTextField("",5);
         panel.add(entryLogger2);
-        panel.add(Box.createRigidArea(new Dimension(10, 0)));
+        panel.add(Box.createRigidArea(new Dimension(5, 0)));
 
         JButton button = new JButton("Invoke Logger Service");
         button.addActionListener(this);
@@ -176,15 +175,16 @@ public class ClientGUI implements ActionListener{
         JButton button = (JButton) e.getSource();
         String label = button.getActionCommand();
 
-        if (label.equals("Invoke Camera Identification Service")) {
-            System.out.println("camera to be invoked - server streaming - done");
+        if (label.equals("CameraON")) {
+            System.out.println("camera to be invoked");
 
 
             ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
             CameraServiceGrpc.CameraServiceBlockingStub blockingStub = CameraServiceGrpc.newBlockingStub(channel);
 
             CameraIdentMessage cameraIdentMessage = CameraIdentMessage.newBuilder()
-                    .setID(entryCamIdent.getText()).build();
+                    //.setID(entryCamIdent.getText()).build();
+                            .setID(label).build();
 
             //we stream the responses (in a blocking manner)
             blockingStub.cameraIdent(cameraIdentMessage)
@@ -194,7 +194,24 @@ public class ClientGUI implements ActionListener{
 
 
 
-        } else if (label.equals("Invoke Camera Service")) {
+        } else if(label.equals("CameraOFF")){
+            System.out.println("camera to be invoked");
+
+
+            ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
+            CameraServiceGrpc.CameraServiceBlockingStub blockingStub = CameraServiceGrpc.newBlockingStub(channel);
+
+            CameraIdentMessage cameraIdentMessage = CameraIdentMessage.newBuilder()
+                    //.setID(entryCamIdent.getText()).build();
+                    .setID(label).build();
+
+            //we stream the responses (in a blocking manner)
+            blockingStub.cameraIdent(cameraIdentMessage)
+                    .forEachRemaining(cameraIdentResponse -> {
+                        replyCamIdent.setText("Camera OFF");
+                    });
+        }
+        else if (label.equals("Invoke Camera Service")) {
             System.out.println("Camera to be invoked - Unary - done");
             ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
             CameraServiceGrpc.CameraServiceBlockingStub blockingStub = CameraServiceGrpc.newBlockingStub(channel);

@@ -60,10 +60,10 @@ public class Camera extends CameraImplBase{
     public void cameraIdent(CameraIdentMessage cameraIdentMessage, StreamObserver<CameraIdentResponse> responseObserver) {
 
         String result = "";
-        int counter = 1;
+        int counter = 0;
         try{
-           for (int i=0; i < 2; i++){
-               result = "Camera " + counter + ": = Cam0" + counter + ", room" + counter + " -> Active";
+           for (int i=0; i < 3; i++){
+               result = "/n" + " Camera " + counter + ": Cam0" + counter + ", room" + counter + " -> Active" + "\n";
                counter++;
                CameraIdentResponse cameraIdentResponse = CameraIdentResponse.newBuilder()
                        .setCameraInfo(result)
